@@ -1,0 +1,5 @@
+*.exe
+tempCodeRunnerFile.*
+__pycache__
+*.in
+*.out
