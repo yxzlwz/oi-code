@@ -3,3 +3,5 @@ tempCodeRunnerFile.*
 __pycache__
 *.in
 *.out
+.vscode
+.idea

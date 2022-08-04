@@ -1,3 +1,5 @@
+// https://www.acwing.com/solution/content/23960/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,7 +16,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         int l = 0, r = len;
         while (l < r) {
-            int mid = (l + r + 1) >> 1;  // 小数部分向上取整
+            int mid = (l + r + 1) >> 1;
             if (a[i] > q[mid])
                 l = mid;
             else
