@@ -1,23 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
-int g[601][601], cnt0, cnt[501], sum, f, minn = 100, minn1 = 100, asdf;
+/*
+    cnt0: 路径的长度
+    cnt[i]: i点的度
+    sum: 度为奇数的节点的个数
+    n: 如题，要求的组数
+    minn: 度为奇数的节点最小编号
+    minn1: 度为偶数的节点最小编号
+*/
+int cnt0, cnt[101], sum, n, minn = 100, minn1 = 100;
+bool g[101][101];
 char ans[10000];
 void dfs(int s) {
     for (int i = 0; i <= 100; i++) {
         if (g[s][i] >= 1) {
-            g[s][i]--, g[i][s]--;
+            g[s][i] = g[i][s] = 0;
             dfs(i);
         }
     }
     ans[++cnt0] = s + 'A';
 }
 int main() {
-    cin >> f;
-    for (int i = 1; i <= f; i++) {
-        string a;
-        cin >> a;
-        g[a[0] - 'A'][a[1] - 'A']++, g[a[1] - 'A'][a[0] - 'A']++;
-        cnt[a[0] - 'A']++, cnt[a[1] - 'A']++;
+    cin >> n;
+    while (n--) {
+        char a, b;
+        cin >> a >> b;
+        a -= 'A', b -= 'A';
+        g[a][b] = g[b][a] = 1;
+        cnt[a]++, cnt[b]++;
     }
     for (int i = 0; i <= 100; i++) {
         if (cnt[i] % 2 == 1) {
@@ -34,5 +44,6 @@ int main() {
     else
         dfs(minn1);
     for (int i = cnt0; i >= 1; i--) cout << ans[i];
+    cout << endl;
     return 0;
 }
